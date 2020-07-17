@@ -26,6 +26,12 @@ function fetchData() {
 //   const greetingContainer = document.getElementById('greeting-container');
 //   greetingContainer.innerText = greeting;
     fetch('/data').then(resp => resp.text()).then((data)=>{
-            document.getElementById('txt').innerHTML = '<i>'+data+'</i>'
+             data = JSON.parse(data) ;
+             
+            for(var i=0;i<data.length;i++) {
+                const elem = document.createElement('p') ;
+                elem.innerText = data[i] ;
+                document.getElementById('txt').appendChild(elem) ;
+            }
     });
 }
